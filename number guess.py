@@ -1,3 +1,31 @@
+
+# before the game starts check if the user is running the latest version of this program or not
+import sys
+import os
+
+# check gitVersion.txt file for the version of this program
+with open('gitVersion.txt', 'r') as f:
+    currentVersion = f.read()
+
+# read the gitVersion.txt in the github repository and compare it with the version of this program
+with open('https://raw.githubusercontent.com/mohammad-sharifi/number-guess/master/gitVersion.txt', 'r') as f:
+    githubVersion = f.read()
+
+if currentVersion != githubVersion
+    print('a new version of this program is available')
+    update = input('do you want to update? (y/n)')
+    if update == 'y':
+        print('updating...')
+        os.system('git pull')
+        print('done!')
+        print('restart the program')
+        sys.exit()
+    elif update == 'n':
+        print('ok, enjoy the game')
+    else:
+        print('invalid input')
+        sys.exit()
+
 # Pick a number between 1 and 10 and try to guess it.
 
 # pick a random number between 1 and 10
