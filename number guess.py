@@ -10,6 +10,15 @@ guessList = [];
 guessCount = 0;
 print('you have 1 guess.');
 
+# before the game starts ask if the player wants the difficulty to be easy or hard
+difficulty = input('Do you want the game to be easy or hard? ');
+if difficulty == 'easy':
+    print('you have 3 guesses.');
+elif difficulty == 'hard':
+    print('you have 1 guess.');
+else:
+    print('invalid response')
+
 while guess != number:
     # get a guess from the user
     guess = int(input('What is your guess? '));
@@ -28,9 +37,15 @@ while guess != number:
         print('sorry, you must guess a number between 1 and 10');
 
     # check if the user has guessed 1 time
-    if guessCount == 1:
+    if guessCount == 1 and difficulty == 'hard':
         print('You have guessed 1 time.');
         print('you have failed');
+        print('you were not able to guess the number');
+        print('the number was', number);
+        print('you guessed', guessList);
+        break
+    elif guessCount == 3 and difficulty == 'easy':
+        print('You have guessed 3 times.');
         print('you were not able to guess the number');
         print('the number was', number);
         print('you guessed', guessList);
