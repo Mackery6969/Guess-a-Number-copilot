@@ -4,11 +4,27 @@
 import random
 
 print('I am thinking of a number between 1 and 10.');
-number = random.randint(1, 10);
+minNumber = 1;
+maxNumber = 10;
+number = random.randint(minNumber, maxNumber);
 guess = '';
 guessList = [];
 guessCount = 0;
-print('you have 1 guess.');
+
+# allow user to pick a number
+while min != number:
+    minNumber = int(input('What is the minimum number? '));
+    maxNumber = int(input('What is the maximum number? '));
+
+    # check if the user has entered a valid number
+    if minNumber > maxNumber:
+        print('The minimum number cannot be greater than the maximum number.');
+        continue;
+    elif minNumber == maxNumber:
+        print('The minimum number cannot be equal to the maximum number.');
+        continue;
+    else:
+        break;
 
 # before the game starts ask if the player wants the difficulty to be easy or hard
 difficulty = input('Do you want the game to be easy or hard? ');
@@ -29,12 +45,13 @@ while guess != number:
     # check if the guess is correct
     if guess == number:
         print('Good job! You guessed my number!');
+        break;
     else:
         print('Nope. Better luck next time!');
 
     # check if the guess is valid
-    if not guess < 1 or not guess > 10:
-        print('sorry, you must guess a number between 1 and 10');
+    if not guess < minNumber or not guess > maxNumber:
+        print('sorry, you must guess a number between' minNumber 'and' maxNumber);
 
     # check if the user has guessed 1 time
     if guessCount == 1 and difficulty == 'hard':
@@ -50,18 +67,3 @@ while guess != number:
         print('the number was', number);
         print('you guessed', guessList);
         break
-    
-# check if the player wants to play again
-playAgain = input('Do you want to play again? (y/n) ');
-if playAgain == 'y':
-    guess = '';
-    guessList = [];
-    guessCount = 0;
-    number = random.randint(1, 10);
-    print('I am thinking of a number between 1 and 10.');
-elif playAgain == 'n':
-    print('Thanks for playing!');
-
-# check if the user input a invalid response
-else:
-    print('Invalid response!');
