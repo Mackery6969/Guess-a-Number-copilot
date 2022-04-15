@@ -8,7 +8,6 @@ number = random.randint(1, 10);
 guess = '';
 guessList = [];
 guessCount = 0;
-print('you have 1 guess.');
 
 # before the game starts ask if the player wants the difficulty to be easy or hard
 difficulty = input('Do you want the game to be easy or hard? ');
