@@ -11,7 +11,7 @@ with open('gitVersion.txt', 'r') as f:
 with open('https://raw.githubusercontent.com/mohammad-sharifi/number-guess/master/gitVersion.txt', 'r') as f:
     githubVersion = f.read()
 
-if currentVersion != githubVersion
+if currentVersion != githubVersion:
     print('a new version of this program is available')
     update = input('do you want to update? (y/n)')
     if update == 'y':
