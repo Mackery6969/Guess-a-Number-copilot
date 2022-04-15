@@ -7,11 +7,11 @@ import os
 with open('gitVersion.txt', 'r') as f:
     currentVersion = f.read()
 
-# read the gitVersion.txt in the github repository and compare it with the version of this program
-with open('https://raw.githubusercontent.com/mohammad-sharifi/number-guess/master/gitVersion.txt', 'r') as f:
-    githubVersion = f.read()
+# read the gitVersion.txt in the github repository and compare it to the gitVersion.txt in the current directory
+with open('https://github.com/homelikezero/Guess-a-Number-copilot/blob/0.1.1b-bugfix/gitVersion.txt', 'r') as f:
+    latestVersion = f.read()
 
-if currentVersion != githubVersion:
+if currentVersion != latestVersion:
     print('a new version of this program is available')
     update = input('do you want to update? (y/n)')
     if update == 'y':
