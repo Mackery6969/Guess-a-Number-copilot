@@ -1,35 +1,9 @@
 
-# before the game starts check if the user is running the latest version of this program or not
-import sys
-import os
-
-# check gitVersion.txt file for the version of this program
-with open('gitVersion.txt', 'r') as f:
-    currentVersion = f.read()
-
-# read the gitVersion.txt in the github repository and compare it to the gitVersion.txt in the current directory
-with open('https://github.com/homelikezero/Guess-a-Number-copilot/blob/0.1.1b-bugfix/gitVersion.txt', 'r') as f:
-    latestVersion = f.read()
-
-if currentVersion != latestVersion:
-    print('a new version of this program is available')
-    update = input('do you want to update? (y/n)')
-    if update == 'y':
-        print('updating...')
-        os.system('git pull')
-        print('done!')
-        print('restart the program')
-        sys.exit()
-    elif update == 'n':
-        print('ok, enjoy the game')
-    else:
-        print('invalid input')
-        sys.exit()
-
 # Pick a number between 1 and 10 and try to guess it.
 
 # pick a random number between 1 and 10
 import random
+import os
 
 print('I am thinking of a number between 1 and 10.');
 number = random.randint(1, 10);
@@ -43,8 +17,15 @@ if difficulty == 'easy':
     print('you have 3 guesses.');
 elif difficulty == 'hard':
     print('you have 1 guess.');
+elif difficulty == 'your mom':
+    print('your not funny')
+    os.exit();
+elif difficulty == 'practice':
+    print('ok then...')
+    print('you have infinate guesses')
 else:
     print('invalid response')
+    os.exit();
 
 while guess != number:
     # get a guess from the user
@@ -56,12 +37,21 @@ while guess != number:
     # check if the guess is correct
     if guess == number:
         print('Good job! You guessed my number!');
-    else:
+    elif difficulty == 'hard':
         print('Nope. Better luck next time!');
+    else:
+        print('you got it wrong :(');
+        print('you have ' + str(guessCount) + ' guesses left.');
 
     # check if the guess is valid
     if not guess < 1 or not guess > 10:
         print('sorry, you must guess a number between 1 and 10');
+
+    # if the difficulty is not hard, check if the player has guessed more than 3 times, if not, tell the user they got it wrong
+    if difficulty != 'hard':
+        if guessCount > 3:
+            print('you have guessed more than 3 times. you lose.');
+            os.exit();
 
     # check if the user has guessed 1 time
     if guessCount == 1 and difficulty == 'hard':
@@ -77,6 +67,8 @@ while guess != number:
         print('the number was', number);
         print('you guessed', guessList);
         break
+    elif difficulty == 'practice':
+        print('you got it wrong!')
     
 # check if the player wants to play again
 playAgain = input('Do you want to play again? (y/n) ');
