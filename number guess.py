@@ -19,13 +19,13 @@ elif difficulty == 'hard':
     print('you have 1 guess.');
 elif difficulty == 'your mom':
     print('your not funny')
-    os.exit();
+    exit();
 elif difficulty == 'practice':
     print('ok then...')
     print('you have infinate guesses')
 else:
     print('invalid response')
-    os.exit();
+    exit();
 
 while guess != number:
     # get a guess from the user
@@ -48,7 +48,7 @@ while guess != number:
         print('sorry, you must guess a number between 1 and 10');
 
     # if the difficulty is not hard, check if the player has guessed more than 3 times, if not, tell the user they got it wrong
-    if difficulty != 'hard':
+    if difficulty != 'hard' and difficulty != 'practice':
         if guessCount > 3:
             print('you have guessed more than 3 times. you lose.');
             os.exit();
